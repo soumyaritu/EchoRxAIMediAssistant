@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "EchoRx",
+    "slug": "echorx",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "ios": {
+      "supportsTablet": false
+    },
+    "android": {
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "EchoRx needs access to scan medicine",
+          "cameraPermission": "EchoRx needs camera to scan medicine labels"
+        }
+      ]
+    ]
+  }
+}
