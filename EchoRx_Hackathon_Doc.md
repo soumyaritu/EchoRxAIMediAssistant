@@ -34,6 +34,15 @@ We didn't just build an AI wrapper; we built a medical-grade accessibility tool.
 
 - **Cross-Platform Audio Engine:** We built a custom React Native audio orchestrator. On iOS, users can seamlessly pause and resume the AI's voice. On Android, it gracefully degrades to a Stop/Restart flow to bypass OS-level Text-to-Speech limitations.
 
+-  **Optimized Text-to-Speech:** The `VoiceAssistAgent` specifically structures its output for listening rather than reading, removing markdown and jargon. The app uses `expo-speech` to read this aloud at a slightly reduced speed (`0.85x`) to ensure maximum comprehension for elderly users.
+
+- **High Contrast UI:** Deep navy backgrounds with bright, accessible warning colors (amber/red/green) for maximum readability.
+
+- **Smart Edge-Case Handling:** The app dynamically formats the UI if the AI cannot read the label (returning "Not visible"). This prevents repetitive or confusing text (like "not visible not visible") from being announced by the screen reader, ensuring a smooth and clear auditory experience.
+
+- **Strict Hallucination Prevention:** The `LabelSenseAgent` is engineered with explicit, strict rules for extracting expiry dates. It only extracts a date if clearly labeled with "EXP", "Expiry", or "Use By", actively avoiding dangerous AI hallucinations that could occur by misinterpreting a Manufacture Date (DOM) or Lot Number.
+
+
 ## 5. The Future
 EchoRx is currently a hyper-optimized prototype. In the future, we plan to build with Production Ready with more safety features like for dynamic drug-interaction checking, allowing users to scan multiple bottles and ask: *"Can I take these two together?"*
 
