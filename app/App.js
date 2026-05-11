@@ -19,13 +19,7 @@ import * as Speech from 'expo-speech';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 
-// ─────────────────────────────────────────────
-// CONFIG — change this to your backend URL
-// When testing locally: use your computer's IP address
-// e.g. http://192.168.1.10:8000
-// ─────────────────────────────────────────────
-//const API_URL = 'http://192.168.0.38:8000';
-const API_URL = 'http://192.168.0.187:8000';
+import { API_URL } from './config';
 
 // ─────────────────────────────────────────────
 // COLOURS — matches the dark blue UI from mockup
