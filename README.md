@@ -208,7 +208,11 @@ EchoRx is built from the ground up to support users with visual impairments and 
 
 - **Strict Hallucination Prevention:** The `LabelSenseAgent` is engineered with explicit, strict rules for extracting expiry dates. It only extracts a date if clearly labeled with "EXP", "Expiry", or "Use By", actively avoiding dangerous AI hallucinations that could occur by misinterpreting a Manufacture Date (DOM) or Lot Number.
 
+- **"Read First, Think Second" Logic (Dose & Food):** To prevent dangerous hallucinations, the system relies strictly on the physical label first. If custom prescriptions (e.g., "Take 2 tablets daily") or specific warning stickers (e.g., "Take with food") are visible on the bottle, the AI is forced to use those exact instructions. It only falls back on its internal AI medical knowledge to provide safe, standard adult advice if the label is blank or illegible.
+
 - **Non-Medicine Object Detection & Safety:** If a user accidentally scans a non-medicine item (e.g., a bottle of bleach or a beer), the AI actively identifies the object instead of failing. The UI dynamically adapts by hiding irrelevant medical cards (like daily dosage) and setting a prominent red warning header with the object's name. Most importantly, the `SafetyGuardAgent` evaluates the object for immediate safety risks (e.g., toxicity or alcohol interactions), and the voice agent clearly explains what the object is alongside any warnings, providing the user with vital spatial context and safety.
+
+- **AI Image Confidence Scoring:** The `LabelSenseAgent` evaluates the clarity and quality of every scanned image. If a photo is blurry, poorly lit, or hard to read, the AI flags it with low confidence. The UI immediately reacts by displaying a prominent amber "LOW CONFIDENCE" warning badge instead of the green "IDENTIFIED" badge, alerting the caregiver or user to take a clearer photo to ensure maximum safety.
 
 ---
 

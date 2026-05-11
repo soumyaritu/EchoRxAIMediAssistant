@@ -28,6 +28,10 @@ We didn't just build an AI wrapper; we built a medical-grade accessibility tool.
 
 - **Non-Medicine Object Detection & Safety:** If a user accidentally scans a bottle of bleach or a beer bottle thinking it's medication, the AI doesn't just crash. It identifies the object, dynamically changes the UI to a bright red warning, and the Safety Agent actively evaluates the object for immediate risks (e.g., toxicity or alcohol interactions).
 
+- **"Read First, Think Second" Logic (Dose & Food):** To prevent dangerous AI hallucination, the system explicitly reads the physical label first. If a custom prescription (e.g., "Take 2 tablets daily") or warning sticker (e.g., "Take with food") is visible, the AI uses those exact instructions. It only falls back to standard general medical knowledge if the physical label is blank or illegible.
+
+- **AI Image Confidence Scoring:** The `LabelSenseAgent` evaluates the clarity of every scan. If a photo is blurry, poorly lit, or hard to read, it flags it with low confidence. The UI reacts instantly by swapping the green "IDENTIFIED" badge for a prominent amber "LOW CONFIDENCE" warning, alerting the caregiver or user to retake the photo for maximum safety.
+
 - **Native Screen Reader Optimization:** We went deep into native OS accessibility. Decorative icons are strictly hidden using `accessibilityElementsHidden={true}` (iOS) and `importantForAccessibility="no"` (Android) to prevent screen readers from reading raw UI code, ensuring a seamless, comma-free VoiceOver and TalkBack experience.
 
 - **Semantic Screen Reader Headings:** All major UI sections are wrapped in native `accessibilityRole="header"`, allowing visually impaired users to instantly swipe and navigate through the app.

@@ -9,8 +9,10 @@ from config import MODEL
 class SafetyInfo(BaseModel):
     purpose: str
     standard_dose: str
+    source_of_dosage: str
     critical_warning: str
     empty_stomach: str
+    source_of_food_advice: str
     max_daily_dose: str
     safe_at_night: str
     night_note: str
@@ -39,7 +41,14 @@ def safety_instruction(ctx: ReadonlyContext) -> str:
         f"Strength: {med.get('dosage', 'Unknown')}\n"
         f"Form: {med.get('form', 'tablet')}\n"
         f"Expiry on label: {med.get('expiry_date', 'not visible')}\n"
+        f"Instructions on label: {med.get('instructions_on_label', 'None')}\n"
+        f"Food instructions on label: {med.get('food_instructions_on_label', 'None')}\n"
         "Provide ONLY the most critical information they need RIGHT NOW. "
+        "IMPORTANT: If 'Instructions on label' is provided and not 'None', you MUST use it for the 'standard_dose' field. "
+        "Only if the label instructions are missing or unclear should you use your general medical knowledge for the dose. "
+        "Set 'source_of_dosage' to 'Label' if you used the label instructions, or 'General Knowledge' if you used your internal knowledge. "
+        "IMPORTANT: If 'Food instructions on label' is provided and not 'None', you MUST use it for the 'empty_stomach' field. "
+        "Otherwise, use your general medical knowledge. Set 'source_of_food_advice' to 'Label' or 'General Knowledge' accordingly. "
         "Use simple, everyday language. No jargon. Short sentences."
     )
 

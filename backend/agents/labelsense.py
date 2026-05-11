@@ -15,6 +15,8 @@ class MedicineInfo(BaseModel):
     expiry_date: str
     warnings_on_label: str
     manufacturer: str
+    instructions_on_label: str
+    food_instructions_on_label: str
     confidence: str
 
 def create_labelsense_agent():
@@ -32,6 +34,8 @@ def create_labelsense_agent():
             "IMPORTANT: This is for a visually impaired/Low vision Users/Elderlyperson safety. Be precise. "
             "Only extract the expiry date if you clearly see the words 'EXP', 'Expiry', or 'Use By' next to it. "
             "If you only see a 'Manufacture Date', 'DOM', or 'Lot Number', do NOT use them as the expiry date. "
-            "If something is not visible, write 'not visible'."
+            "If something is not visible, write 'not visible'. "
+            "Look carefully for explicit dosage or usage instructions printed on the label. If found, extract them exactly into 'instructions_on_label'. If not found, write 'None'. "
+            "Also look for specific stickers or warnings about food (e.g. 'Take with food', 'Take on empty stomach'). Extract these into 'food_instructions_on_label'. If not found, write 'None'."
         )
     )
