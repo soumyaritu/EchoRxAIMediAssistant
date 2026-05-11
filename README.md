@@ -52,7 +52,7 @@ EchoRxAIMediAssistant/
 │
 └── backend/                ← Python AI agents
     ├── config.py           ← Configuration and API Keys
-    ├── server.py           ← API server and orchestrator
+    ├── server.py           ← API server and Root Agent orchestrator
     ├── agents/             ← Multi-agent modules
     │   ├── __init__.py     ← Module exports
     │   ├── labelsense.py        ← LabelSenseAgent
