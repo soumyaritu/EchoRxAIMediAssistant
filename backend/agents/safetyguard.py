@@ -31,7 +31,7 @@ def safety_instruction(ctx: ReadonlyContext) -> str:
             f"Object detected: {med.get('detected_object', 'Unknown object')}\n"
             "Provide ONLY the most critical safety information they need RIGHT NOW about this object. "
             "If it is dangerous (like bleach, alcohol, or chemicals), warn them immediately in the critical_warning field. "
-            "If it is harmless (like a cup), just say it is a harmless object. "
+            "If it is harmless (like a cup or a book), output 'None' for the critical_warning field so we do not cause unnecessary panic. "
             "Use simple, everyday language. No jargon. Short sentences."
         )
 

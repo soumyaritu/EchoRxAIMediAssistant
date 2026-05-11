@@ -380,7 +380,7 @@ function ResultScreen({ result, imageUri, speechState, onToggleSpeech, onBack })
   const purpose = safety.purpose || 'Information not available';
   const stdDose = safety.standard_dose || 'Check label';
   const maxDose = safety.max_daily_dose || 'Check label';
-  const warning = safety.critical_warning || '';
+  const warning = (safety.critical_warning && safety.critical_warning.toLowerCase() !== 'none') ? safety.critical_warning : '';
   const emptyStomach = safety.empty_stomach || 'either';
   const safeNight = safety.safe_at_night !== 'no';
   const nightNote = safety.night_note || '';
