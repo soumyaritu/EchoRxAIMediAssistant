@@ -1,6 +1,6 @@
 ### GDG London AI Devcamp 2026 — Build with AI
 # 💊 EchoRx — An Intelligent Medicine Guide
-## Scan. Listen. Understand for Visually Impaired/Elderly Person
+## Scan. Listen. Understand for Visually Impaired/Elderly Person/Everyone
 
 **EchoRx** is a voice you can trust when clarity matters most. Designed for elderly individuals, people with visual impairments, and the caregivers who support them, it transforms everyday uncertainty into informed confidence.
 
@@ -11,11 +11,15 @@ Like an echo that returns with certainty, EchoRx reflects essential information 
 
 ---
 
-## The Problem We are trying to solve
+## 🚨 The Problem We Are Solving
 
-> Think about a simple moment at home.
+This idea comes from something we see around us every day.
 
-An elderly person, living alone, wakes up feeling unwell. They reach for their medicines—several similar-looking bottles on the table. The labels are small, the light is dim, and their vision isn’t clear.
+In many families, children move abroad or live away for work, while elderly parents stay at home on their own. It’s a common reality in our neighborhoods, in our homes.
+
+Think about a simple moment.
+
+An elderly parent wakes up in the middle of the night feeling unwell. They reach for their medicines—several similar-looking bottles placed on a table or in a cabinet. The labels are small, the lighting is dim, and their vision isn’t clear enough to read.
 
 They pause.
 
@@ -23,21 +27,29 @@ Is this the right one?
 Is it expired?
 What’s the dosage?
 
-A small moment of doubt but one wrong choice can lead to serious consequences.
+It’s just a small moment of doubt—but one wrong choice can lead to serious consequences.
 This is a quiet, everyday risk in homes all around us.
+And it’s a problem that has largely gone unsolved—until now.
 
-> This is a problem nobody is solving. **Until now.**"
-> We solve this by turning a standard smartphone into an expert, on-call pharmacist.
+## 💡 The Solution
 
+We solve this by turning a standard smartphone into an expert, on-call pharmacist.
 
-By simply pointing the camera at a medicine bottle, use the Google Agent Development Kit (ADK) and Gemini 2.5 Flash to:
+With EchoRx, users simply point their phone at a medicine bottle. Powered by the Google Agent Development Kit (ADK) and Gemini 2.5 Flash, the app:
 
-Instantly read and identify the physical label.
-Cross-reference the medicine with critical safety rules (e.g., maximum daily dose, food requirements).
-Speak the results aloud in a clear, calm, jargon-free voice.
+- Instantly reads and identifies the medicine label
+- Cross-checks critical safety information (dosage, timing, warnings)
+- Speaks the guidance aloud in a clear, calm, easy-to-understand voice
 
-> EchoRx says: *"I can see this is Ibuprofen 400mg, used for pain relief.
-> Do NOT take on empty stomach. Maximum 3 tablets in 24 hours."*
+In seconds, EchoRx responds:
+
+> *"I can see this is Ibuprofen 400mg, used for pain relief. Do not take on an empty stomach. Maximum 3 tablets in 24 hours."*
+
+No reading.
+No guessing.
+No risk.
+
+EchoRx transforms uncertainty into clarity—bringing safety, confidence, and peace of mind to every home.
 
 ---
 
@@ -47,17 +59,19 @@ Speak the results aloud in a clear, calm, jargon-free voice.
 EchoRxAIMediAssistant/
 ├── app/                    ← React Native phone app
 │   ├── App.js              ← All 3 screens (Home, Analysing, Result)
+│   ├── config.js           ← Frontend configuration & API URL
 │   ├── package.json        ← App dependencies
 │   └── app.json            ← Expo configuration
 │
 └── backend/                ← Python AI agents
     ├── config.py           ← Configuration and API Keys
-    ├── server.py           ← API server and Root Agent orchestrator
+    ├── server.py           ← FastAPI server and endpoints
     ├── agents/             ← Multi-agent modules
     │   ├── __init__.py     ← Module exports
-    │   ├── labelsense.py        ← LabelSenseAgent
-    │   ├── safetyguard.py       ← SafetyGuardAgent
-    │   └── voiceassistant.py    ← VoiceAssistAgent
+    │   ├── root.py         ← Root Agent orchestrator
+    │   ├── labelsense.py   ← LabelSenseAgent
+    │   ├── safetyguard.py  ← SafetyGuardAgent
+    │   └── voiceassistant.py ← VoiceAssistAgent
     └── requirements.txt    ← Python dependencies
 ```
 
