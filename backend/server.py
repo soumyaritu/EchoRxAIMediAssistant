@@ -14,33 +14,12 @@ from google.genai import types
 # pyrefly: ignore [missing-import]
 from pydantic import BaseModel
 # pyrefly: ignore [missing-import]
-from google.adk.agents import SequentialAgent
-# pyrefly: ignore [missing-import]
 from google.adk.runners import Runner
 # pyrefly: ignore [missing-import]
 from google.adk.sessions import InMemorySessionService
-# pyrefly: ignore [missing-import]
-from google.adk.apps import App
 
 from config import MODEL
-from agents import create_labelsense_agent, create_safetyguard_agent, create_voiceassist_agent
-
-# ─────────────────────────────────────────────
-# AGENTS
-# ─────────────────────────────────────────────
-labelsense_agent = create_labelsense_agent()
-safetyguard_agent = create_safetyguard_agent()
-voiceassist_agent = create_voiceassist_agent()
-
-root_agent = SequentialAgent(
-    name="EchoRxRootAgent",
-    sub_agents=[labelsense_agent, safetyguard_agent, voiceassist_agent]
-)
-
-app_adk = App(
-    name="echorx_app",
-    root_agent=root_agent
-)
+from agents.root import app_adk
 
 session_service = InMemorySessionService()
 
