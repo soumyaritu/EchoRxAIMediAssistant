@@ -33,6 +33,7 @@ def create_labelsense_agent():
             "If it IS a medicine, set is_medicine to True and set 'detected_object' to 'medicine'. "
             "IMPORTANT: This is for a visually impaired/Low vision Users/Elderlyperson safety. Be precise. "
             "Only extract the expiry date if you clearly see the words 'EXP', 'Expiry', or 'Use By' next to it. "
+            "Extract the expiry date regardless of how it is written (e.g. '10 2026', '10-2026'), but ALWAYS format your final output strictly as MM/YYYY (e.g. '10/2026'). If a specific day is present on the label, do not ignore it, format it as DD/MM/YYYY (e.g. '28/09/2025'). "
             "If you only see a 'Manufacture Date', 'DOM', or 'Lot Number', do NOT use them as the expiry date. "
             "If something is not visible, write 'not visible'. "
             "Look carefully for explicit dosage or usage instructions printed on the label. If found, extract them exactly into 'instructions_on_label'. If not found, write 'None'. "

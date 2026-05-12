@@ -1,6 +1,11 @@
 import os
 import uuid
 import base64
+import ssl
+
+# HACK: Disable SSL Certificate verification for Hackathon Demo
+# This prevents crashes on strict Wi-Fi networks (like universities or corporate offices)
+ssl._create_default_https_context = ssl._create_unverified_context
 # pyrefly: ignore [missing-import]
 import uvicorn
 from pathlib import Path

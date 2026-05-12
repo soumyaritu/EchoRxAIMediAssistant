@@ -61,3 +61,4 @@ def create_safetyguard_agent():
         include_contents='none',
         instruction=safety_instruction
     )
+
