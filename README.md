@@ -1,6 +1,6 @@
 ### GDG London AI Devcamp 2026 — Build with AI
 # 💊 EchoRx — An Intelligent Medicine Guidance Through Vision & Voice
-## Scan. Listen. Understand for Visually Impaired/Elderly Person/Everyone
+## Scan. Listen. Understand. For Visually Impaired/Elderly Person/Everyone
 
 **EchoRx** is a voice you can trust when clarity matters most. Designed for elderly individuals, people with visual impairments, and the caregivers who support them, it transforms everyday uncertainty into informed confidence.
 
