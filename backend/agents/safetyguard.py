@@ -5,6 +5,7 @@ from google.adk.agents import LlmAgent
 # pyrefly: ignore [missing-import]
 from google.adk.agents.readonly_context import ReadonlyContext
 from config import MODEL
+from datetime import date
 
 class SafetyInfo(BaseModel):
     purpose: str
@@ -21,6 +22,7 @@ class SafetyInfo(BaseModel):
     nhs_advice: str
 
 def safety_instruction(ctx: ReadonlyContext) -> str:
+    today_str = date.today().strftime("%B %Y")
     med = ctx.state.get("medicine_info", {})
     if isinstance(med, BaseModel):
         med = med.model_dump()
@@ -37,6 +39,7 @@ def safety_instruction(ctx: ReadonlyContext) -> str:
 
     return (
         "A visually impaired/Low Vision Users/Elderlyperson is unwell at 3am and needs to know if they can safely take their medicine. "
+        f"Today's date is: {today_str}. "
         f"Medicine: {med.get('medicine_name', 'Unknown')}\n"
         f"Strength: {med.get('dosage', 'Unknown')}\n"
         f"Form: {med.get('form', 'tablet')}\n"
@@ -44,6 +47,7 @@ def safety_instruction(ctx: ReadonlyContext) -> str:
         f"Instructions on label: {med.get('instructions_on_label', 'None')}\n"
         f"Food instructions on label: {med.get('food_instructions_on_label', 'None')}\n"
         "Provide ONLY the most critical information they need RIGHT NOW. "
+        "IMPORTANT: Compare the 'Expiry on label' to today's date. If the medicine is expired, you MUST put a strong warning in the 'critical_warning' field stating that it is expired and unsafe to take. "
         "IMPORTANT: If 'Instructions on label' is provided and not 'None', you MUST use it for the 'standard_dose' field. "
         "Only if the label instructions are missing or unclear should you use your general medical knowledge for the dose. "
         "Set 'source_of_dosage' to 'Label' if you used the label instructions, or 'General Knowledge' if you used your internal knowledge. "
