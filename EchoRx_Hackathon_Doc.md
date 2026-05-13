@@ -46,8 +46,10 @@ We didn't just build an AI wrapper; we built a medical-grade accessibility tool.
 
 - **Strict Hallucination Prevention:** The `LabelSenseAgent` is engineered with explicit, strict rules for extracting expiry dates. It only extracts a date if clearly labeled with "EXP", "Expiry", or "Use By", actively avoiding dangerous AI hallucinations that could occur by misinterpreting a Manufacture Date (DOM) or Lot Number.
 
+- Real-Time Expiry Validation: To prevent the AI from giving unsafe advice, the SafetyGuardAgent is dynamically injected with the current real-world date at the moment of scanning. It explicitly compares the extracted expiry date against today's date and forces a severe, prominent warning if the medicine is expired, rather than passively relying on the AI's internal sense of time.
+
 
 ## 5. The Future
-EchoRx is currently a hyper-optimized prototype. In the future, we plan to build with Production Ready with more safety features like for dynamic drug-interaction checking, allowing users to scan multiple bottles and ask: *"Can I take these two together?"*
+EchoRx is currently a hyper-optimized prototype. In the future, we plan to build Production Ready with more safety features, like for dynamic drug-interaction checking, allowing users to scan multiple bottles and ask: *"Can I take these two together?"*
 
 > **"Like an echo that returns with certainty, EchoRx reflects essential information back to you in a voice that is steady, reliable, and clear. More than technology, it is confidence, safety, and peace of mind spoken aloud."**
