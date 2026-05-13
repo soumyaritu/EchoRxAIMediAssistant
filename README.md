@@ -1,7 +1,13 @@
 ### GDG London AI Devcamp 2026 — Build with AI
 # 💊 EchoRx — An Intelligent Medicine Guidance Through Vision & Voice
-## Scan. Listen. Understand. For Visually Impaired/Elderly Person/Everyone
+ Powered by:
+- Google ADK
+- Gemini 2.5 Flash
+- React Native
+- FastAPI
+- Multi-Agent AI Architecture
 
+## Scan. Listen. Understand. For Visually Impaired/Elderly Person/Everyone
 **EchoRx** is a voice you can trust when clarity matters most. Designed for elderly individuals, people with visual impairments, and the caregivers who support them, it transforms everyday uncertainty into informed confidence.
 
 With a simple scan, EchoRx identifies your medication and delivers clear, spoken guidance on what it is, how to take it, and what to watch for. No confusion, no second guessing—just accurate, reassuring support when it’s needed most.
@@ -33,7 +39,7 @@ And it’s a problem that has largely gone unsolved—until now.
 
 ## 💡 The Solution
 
-We solve this by turning a standard smartphone into an expert, on-call pharmacist.
+We solve this by turning a standard smartphone into an intelligent medicine guidance assistant
 
 With EchoRx, users simply point their phone at a medicine bottle. Powered by the Google Agent Development Kit (ADK) and Gemini 2.5 Flash, the app:
 
