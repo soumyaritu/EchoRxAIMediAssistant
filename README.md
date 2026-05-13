@@ -222,7 +222,10 @@ EchoRx is built from the ground up to support users with visual impairments and 
 
 - **Optimized Text-to-Speech:** The `VoiceAssistAgent` specifically structures its output for listening rather than reading, removing markdown and jargon. The app uses `expo-speech` to read this aloud at a slightly reduced speed (`0.85x`) to ensure maximum comprehension for elderly users.
 
-- **High Contrast UI:** Deep navy backgrounds with bright, accessible warning colors (amber/red/green) for maximum readability.
+- **Inclusive UI Design:**
+  - **For Low Vision:** High contrast dark mode (pure white text against deep navy backgrounds) exceeding AAA contrast standards. Key data points (like Expiry Dates) utilize enlarged 15pt+ fonts, ensuring readability.
+  - **For Color Blindness :** Zero reliance on color-coding alone. All warnings pair high-contrast colors with explicit icons (⚠️) and dynamic text labels (e.g., swapping "IDENTIFIED" for "LOW CONFIDENCE") to ensure meaning is conveyed independent of color perception.
+  - **For the Elderly :** A purely linear layout with zero hidden menus or complex gestures. Massive touch targets for the audio player and navigation buttons directly support users with hand tremors or arthritis.
 
 - **Smart Edge-Case Handling:** The app dynamically formats the UI if the AI cannot read the label (returning "Not visible"). This prevents repetitive or confusing text (like "not visible not visible") from being announced by the screen reader, ensuring a smooth and clear auditory experience.
 

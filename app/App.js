@@ -667,17 +667,17 @@ const styles = StyleSheet.create({
     backgroundColor: C.card, alignItems: 'center', justifyContent: 'center',
   },
   identifiedBadge: {
-    backgroundColor: '#065F46', paddingHorizontal: 12,
-    paddingVertical: 5, borderRadius: 20,
+    backgroundColor: '#065F46', paddingHorizontal: 16,
+    height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center'
   },
-  identifiedText: { color: C.green, fontSize: 11, fontWeight: '700', letterSpacing: 1.5 },
+  identifiedText: { color: C.white, fontSize: 13, fontWeight: '700', letterSpacing: 0.5, includeFontPadding: false, textAlignVertical: 'center' },
 
   medicineHeader: {
     width: '100%', borderRadius: 16, padding: 20, marginBottom: 12,
   },
   medicineName: { fontSize: 24, fontWeight: 'normal', color: C.white, marginBottom: 4 },
   medicineCategories: { color: 'rgba(255,255,255,0.75)', fontSize: 13, marginBottom: 6 },
-  medicineExpiry: { color: 'rgba(255,255,255,0.55)', fontSize: 12 },
+  medicineExpiry: { color: 'rgba(255,255,255,0.7)', fontSize: 15 },
 
   cardsContainer: { width: '100%', gap: 10 },
 
@@ -687,7 +687,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   infoCardHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 8 },
-  infoCardLabel: { fontSize: 11, fontWeight: '700', letterSpacing: 1.5 },
+  infoCardLabel: { fontSize: 13, fontWeight: '700', letterSpacing: 1.0 },
   cardValue: { color: C.white, fontSize: 15, fontWeight: '500', lineHeight: 22 },
 
   alertCard: {
