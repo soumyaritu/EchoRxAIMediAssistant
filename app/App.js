@@ -660,7 +660,8 @@ const styles = StyleSheet.create({
   resultTopBar: {
     flexDirection: 'row', width: '100%',
     justifyContent: 'space-between', alignItems: 'center',
-    paddingTop: 16, paddingBottom: 8,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight + 16 : 16,
+    paddingBottom: 8,
   },
   backBtn: {
     width: 38, height: 38, borderRadius: 19,
@@ -668,9 +669,11 @@ const styles = StyleSheet.create({
   },
   identifiedBadge: {
     backgroundColor: '#065F46', paddingHorizontal: 16,
-    height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center'
+    paddingVertical: 6, borderRadius: 16, alignItems: 'center', justifyContent: 'center'
   },
-  identifiedText: { color: C.white, fontSize: 13, fontWeight: '700', letterSpacing: 0.5, includeFontPadding: false, textAlignVertical: 'center' },
+  identifiedText: { 
+    color: C.white, fontSize: 13, fontWeight: '700', letterSpacing: 0.5 
+  },
 
   medicineHeader: {
     width: '100%', borderRadius: 16, padding: 20, marginBottom: 12,
