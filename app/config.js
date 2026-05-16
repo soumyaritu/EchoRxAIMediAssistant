@@ -6,3 +6,5 @@
 // ─────────────────────────────────────────────
 
 export const API_URL = 'http://192.168.0.187:8000';
+// export const API_URL = 'http://172.20.10.10:8000';
+// export const API_URL = 'http://172.20.10.9:8000';
