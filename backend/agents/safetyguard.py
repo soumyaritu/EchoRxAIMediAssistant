@@ -22,7 +22,7 @@ class SafetyInfo(BaseModel):
     nhs_advice: str
 
 def safety_instruction(ctx: ReadonlyContext) -> str:
-    today_str = date.today().strftime("%B %Y")
+    today_str = date.today().strftime("%d %B %Y")
     med = ctx.state.get("medicine_info", {})
     if isinstance(med, BaseModel):
         med = med.model_dump()

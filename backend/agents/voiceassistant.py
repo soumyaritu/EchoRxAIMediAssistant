@@ -26,7 +26,7 @@ def voice_instruction(ctx: ReadonlyContext) -> str:
         "Calm, clear, ordered — designed to be heard not read. Do not use markdown. "
         f"Medicine Info: {med}\n"
         f"Safety Info: {safety}\n"
-        "Synthesize a natural, helpful spoken response."
+        "Synthesize a natural, helpful spoken response. If an exact day is provided in the expiry date, ensure you include it in your response."
     )
 
 def create_voiceassist_agent():
