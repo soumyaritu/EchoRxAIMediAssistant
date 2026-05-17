@@ -23,6 +23,8 @@ This idea comes from something we see around us every day.
 
 In many families, children move abroad or live away for work, while elderly parents stay at home on their own. It’s a common reality in our neighborhoods, in our homes.
 
+At the same time, people with visual impairments, low vision, or color blindness can struggle to read tiny medicine labels, especially in poor lighting or stressful situations.
+
 Think about a simple moment.
 
 An elderly parent wakes up in the middle of the night feeling unwell. They reach for their medicines—several similar-looking bottles placed on a table or in a cabinet. The labels are small, the lighting is dim, and their vision isn’t clear enough to read.
