@@ -3,7 +3,8 @@
 **GDG London AI Devcamp 2026 — Build with AI**
 
 ## 1. The Hook
-> "Think about a simple moment at home. An elderly person, living alone, wakes up feeling unwell at 3 AM. They reach for their medicines—several similar-looking bottles on the table. The labels are small, the light is dim, and their vision isn’t clear. A small moment of doubt, but one wrong choice can lead to serious consequences. This is a problem nobody is solving. Until now."
+> "Think about a simple moment at home. An elderly person, living alone, wakes up feeling unwell at 3 AM. They reach for their medicines—several similar-looking bottles on the table. The labels are small, the light is dim, and their vision isn’t clear. A small moment of doubt, but one wrong choice can lead to serious consequences.
+> That’s the problem that inspired us to build EchoRx.
 
 ## 2. What is EchoRx?
 **EchoRx** is a voice you can trust when clarity matters most. Designed specifically for the elderly, individuals with visual impairments, and their caregivers, it transforms everyday medical uncertainty into informed confidence.
