@@ -12,7 +12,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
   View, Text, TouchableOpacity, StyleSheet, SafeAreaView,
-  StatusBar, Animated, ScrollView, Image, Platform, Alert
+  StatusBar, Animated, ScrollView, Image, Platform, Alert,
+  AccessibilityInfo, findNodeHandle
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import * as Speech from 'expo-speech';
@@ -206,8 +207,18 @@ export default function App() {
 // ═══════════════════════════════════════════════
 function HomeScreen({ onScan }) {
   const pulse = useRef(new Animated.Value(1)).current;
+  const headerRef = useRef(null);
 
   useEffect(() => {
+    if (Platform.OS === 'android') {
+      setTimeout(() => {
+        if (headerRef.current) {
+          const reactTag = findNodeHandle(headerRef.current);
+          if (reactTag) AccessibilityInfo.setAccessibilityFocus(reactTag);
+        }
+      }, 250); // slight delay ensures the screen is ready for focus
+    }
+
     Animated.loop(
       Animated.sequence([
         Animated.timing(pulse, { toValue: 1.08, duration: 1200, useNativeDriver: true }),
@@ -219,7 +230,13 @@ function HomeScreen({ onScan }) {
   return (
     <SafeAreaView style={styles.screen}>
       {/* Header */}
-      <View style={styles.homeHeader}>
+      <View 
+        style={styles.homeHeader} 
+        ref={headerRef}
+        accessible={true}
+        accessibilityRole="header"
+        accessibilityLabel="EchoRx, Scan. Listen. Understand."
+      >
         <View style={styles.logoIcon}>
           <Ionicons name="radio" size={24} color={C.white} accessible={false} importantForAccessibility="no" accessibilityElementsHidden={true} />
         </View>
@@ -392,6 +409,11 @@ function ResultScreen({ result, imageUri, speechState, onToggleSpeech, onBack })
       emptyStomach === 'yes' ? '✅  Can take on empty stomach' :
         '✅  Take with or without food';
 
+  const stomachTextAccessible =
+    emptyStomach === 'no' ? 'Take with food' :
+      emptyStomach === 'yes' ? 'Can take on empty stomach' :
+        'Take with or without food';
+
   return (
     <SafeAreaView style={styles.screen}>
       {/* Top bar */}
@@ -416,7 +438,11 @@ function ResultScreen({ result, imageUri, speechState, onToggleSpeech, onBack })
         </View>
       </View>
 
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 120 }}>
+      <ScrollView 
+        showsVerticalScrollIndicator={false} 
+        style={Platform.OS === 'android' ? { flex: 1, alignSelf: 'stretch' } : undefined}
+        contentContainerStyle={{ paddingBottom: Platform.OS === 'android' ? 24 : 120 }}
+      >
         {!isMedicine && (
           <View style={[styles.infoCard, { borderColor: '#EF4444', borderWidth: 1, marginTop: 20 }]}>
             <View style={styles.infoCardHeader} accessibilityRole="header" accessible={true} accessibilityLabel="NOT A MEDICINE">
@@ -455,7 +481,13 @@ function ResultScreen({ result, imageUri, speechState, onToggleSpeech, onBack })
 
               {/* Stomach */}
               <InfoCard label="WITH FOOD?" icon="restaurant">
-                <Text style={styles.cardValue}>{stomachText}</Text>
+                <Text 
+                  style={styles.cardValue}
+                  accessible={true}
+                  accessibilityLabel={stomachTextAccessible}
+                >
+                  {stomachText}
+                </Text>
               </InfoCard>
             </>
           )}
@@ -525,6 +557,7 @@ function ResultScreen({ result, imageUri, speechState, onToggleSpeech, onBack })
             style={{ marginRight: 8 }}
             accessible={false}
             importantForAccessibility="no-hide-descendants"
+            accessibilityElementsHidden={true}
           />
           <Text style={styles.readAloudText}>
             {speechState === 'playing' ? (Platform.OS === 'android' ? 'Stop Reading' : 'Pause Reading') :
@@ -702,7 +735,12 @@ const styles = StyleSheet.create({
   alertText: { color: '#FDE68A', fontSize: 13, lineHeight: 20, flex: 1 },
 
   readAloudBar: {
-    position: 'absolute', bottom: 0, left: 0, right: 0,
+    ...(Platform.OS === 'android' ? {
+      alignSelf: 'stretch',
+      marginHorizontal: -20,
+    } : {
+      position: 'absolute', bottom: 0, left: 0, right: 0,
+    }),
     backgroundColor: C.bg, paddingHorizontal: 20, paddingBottom: 32, paddingTop: 12,
     borderTopWidth: 1, borderTopColor: C.cardBorder,
   },
