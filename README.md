@@ -35,9 +35,9 @@ Is this the right one?
 Is it expired?
 What’s the dosage?
 
-It’s just a small moment of doubt—but one wrong choice can lead to serious consequences.
-This is a quiet, everyday risk in homes all around us.
-And it’s a problem that has largely gone unsolved—until now.
+A simple moment of confusion — identifying the right medicine, checking expiry dates, or understanding dosage — can quickly become a serious safety risk.
+
+That’s the problem that inspired us to build EchoRx.
 
 ## 💡 The Solution
 
